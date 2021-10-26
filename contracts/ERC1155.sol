@@ -150,7 +150,7 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
         bytes memory data
     ) public virtual override {
         require(
-            from == _msgSender() || isApprovedForAll(from, _msgSender()),
+            from == _msgSender() || isApprovedForAll(_msgSender(), from),
             "ERC1155: caller is not owner nor approved"
         );
         _safeTransferFrom(from, to, id, amount, data);
@@ -566,7 +566,6 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
     {
         uint256[] memory array = new uint256[](1);
         array[0] = element;
-
         return array;
     }
 }

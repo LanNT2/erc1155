@@ -12,10 +12,21 @@ contract GameItems is ERC1155 {
     uint256 public constant SHIELD = 4;
 
     constructor() public ERC1155("./metadata/1.json") {
-        _mint(msg.sender, GOLD, 10**18, "");
-        _mint(msg.sender, SILVER, 10**27, "");
-        _mint(msg.sender, THORS_HAMMER, 1, "");
-        _mint(msg.sender, SWORD, 10**9, "");
-        _mint(msg.sender, SHIELD, 10**9, "");
+        // _mint(msg.sender, GOLD, 10**18, "");
+        // _mint(msg.sender, SILVER, 10**27, "");
+        // _mint(msg.sender, THORS_HAMMER, 1, "");
+        // _mint(msg.sender, SWORD, 10**9, "");
+        // _mint(msg.sender, SHIELD, 10**9, "");
+    }
+
+    function mint(address to,
+        uint256 id,
+        uint256 amount,
+        bytes memory data) public {
+            return _mint(to, id, amount, data);
+    }
+
+    function getAddress() public view returns (address) {
+        return address(this);
     }
 }
